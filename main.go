@@ -56,13 +56,31 @@ func main() {
             fmt.Print("Indeks bahan makanan yang akan dihapus: ")
             fmt.Scan(&indeks)
             operasi.HapusBahanMakanan(indeks)
-        case 4:
+       case 4:
+            fmt.Println("1. Cari menggunakan Sequential Search")
+            fmt.Println("2. Cari menggunakan Binary Search")
+            var pilihanCari int
+            fmt.Print("Pilih metode pencarian: ")
+            fmt.Scan(&pilihanCari)
+
             var nama string
             fmt.Print("Cari bahan makanan berdasarkan nama: ")
             fmt.Scan(&nama)
-            indeks := utils.SequentialSearch(nama)
+
+            var indeks int
+            switch pilihanCari {
+            case 1:
+                indeks = utils.SequentialSearch(nama)
+            case 2:
+                utils.SelectionSortNama()
+                indeks = utils.BinarySearch(nama)
+            default:
+                fmt.Println("Pilihan tidak valid.")
+                continue
+            }
+
             if indeks != -1 {
-                fmt.Printf("Bahan makanan ditemukan di indeks %d.\n", indeks)
+                fmt.Printf("Bahan makanan ditemukan di ID %d.\n", indeks+1)
             } else {
                 fmt.Println("Bahan makanan tidak ditemukan.")
             }
