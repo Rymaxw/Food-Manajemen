@@ -5,15 +5,18 @@ import (
     "fmt"
 )
 
-// HapusBahanMakanan menghapus bahan makanan berdasarkan indeks
-func HapusBahanMakanan(indeks int) {
-    if indeks < 0 || indeks >= models.JumlahData {
-        fmt.Println("Indeks tidak valid.")
+// HapusBahanMakanan menghapus bahan makanan berdasarkan ID
+func HapusBahanMakanan(ID int) {
+    // Validasi ID
+    if ID < 1 || ID > models.JumlahData {
+        fmt.Println("ID tidak valid.")
         return
     }
 
-    // Geser elemen-elemen setelah indeks ke kiri
-    for i := indeks; i < models.JumlahData-1; i++ {
+
+    indeksArray := ID - 1
+
+    for i := indeksArray; i < models.JumlahData-1; i++ {
         models.StokBahanMakanan[i] = models.StokBahanMakanan[i+1]
     }
     models.JumlahData--
