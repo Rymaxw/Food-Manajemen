@@ -5,7 +5,7 @@ import (
     "fmt"
 )
 
-// SelectionSort mengurutkan bahan makanan berdasarkan tanggal kedaluwarsa
+
 func SelectionSort() {
     for i := 0; i < models.JumlahData-1; i++ {
         minIndex := i
@@ -14,13 +14,13 @@ func SelectionSort() {
                 minIndex = j
             }
         }
-        // Tukar elemen
+
         models.StokBahanMakanan[i], models.StokBahanMakanan[minIndex] = models.StokBahanMakanan[minIndex], models.StokBahanMakanan[i]
     }
     fmt.Println("Daftar bahan makanan telah diurutkan berdasarkan tanggal kedaluwarsa.")
 }
 
-// InsertionSort mengurutkan bahan makanan berdasarkan jumlah stok
+
 func InsertionSort() {
     for i := 1; i < models.JumlahData; i++ {
         current := models.StokBahanMakanan[i]
@@ -32,4 +32,18 @@ func InsertionSort() {
         models.StokBahanMakanan[j+1] = current
     }
     fmt.Println("Daftar bahan makanan telah diurutkan berdasarkan jumlah stok.")
+}
+
+func SelectionSortNama() {
+    for i := 0; i < models.JumlahData-1; i++ {
+        minIndex := i
+        for j := i + 1; j < models.JumlahData; j++ {
+            if models.StokBahanMakanan[j].Nama < models.StokBahanMakanan[minIndex].Nama {
+                minIndex = j
+            }
+        }
+
+        models.StokBahanMakanan[i], models.StokBahanMakanan[minIndex] = models.StokBahanMakanan[minIndex], models.StokBahanMakanan[i]
+    }
+    fmt.Println("Daftar bahan makanan telah diurutkan berdasarkan nama.")
 }
